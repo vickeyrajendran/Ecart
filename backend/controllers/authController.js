@@ -1,21 +1,20 @@
-const catchAsyncError=require('../middlewares/catchAsyncError')
-const User= require('../models/userModel');
+const catchAsyncError = require('../middlewares/catchAsyncError');
+const User = require('../models/userModel');
 const sendEmail = require('../utils/email');
-const ErrorHandler=require('../utils/errorHandler');
-const sendToken=require('../utils/jwt');
-const crypto=require('crypto');
+const ErrorHandler = require('../utils/errorHandler');
+const sendToken = require('../utils/jwt');
+const crypto = require('crypto')
 
 //Register User - /api/v1/register
 exports.registerUser = catchAsyncError(async (req, res, next) => {
     const {name, email, password } = req.body
 
     let avatar;
-  
+    
     let BASE_URL = process.env.BACKEND_URL;
     if(process.env.NODE_ENV === "production"){
-         BASE_URL = `${req.protocol}://${req.get('host')}`
-             
-    
+        BASE_URL = `${req.protocol}://${req.get('host')}`
+    }
 
     if(req.file){
         avatar = `${BASE_URL}/uploads/user/${req.file.originalname}`
@@ -176,7 +175,6 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     let BASE_URL = process.env.BACKEND_URL;
     if(process.env.NODE_ENV === "production"){
         BASE_URL = `${req.protocol}://${req.get('host')}`
-    
     }
 
     if(req.file){
