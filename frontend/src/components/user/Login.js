@@ -44,7 +44,7 @@ const toggleShowPassword = () => {
             })
             return
         }
-    },[error,isAuthenticated,dispatch,navigate])
+    },[error,isAuthenticated,dispatch,navigate,redirect])
 
     return(
         <Fragment>
