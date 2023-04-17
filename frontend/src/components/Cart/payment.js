@@ -58,7 +58,7 @@ export default function Payment() {
                 return
         }
 
-},[])
+},[shippingInfo, orderError,navigate,dispatch])
  const submitHandler = async(e)=>{
     e.preventDefault();
     document.querySelector('#pay_btn').disabled = true;
@@ -101,15 +101,12 @@ export default function Payment() {
         }
      }
     } catch (error) {
-        
+        toast('An error occurred. Please try again later.', {
+            type: 'error',
+            position: toast.POSITION.BOTTOM_CENTER
+        });
     }
-
-
-
  }
-
-
-
 return(
    
     <div className="row wrapper">
