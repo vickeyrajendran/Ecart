@@ -312,6 +312,20 @@ footer {
   color: white;
   margin-top: 2.5rem;
 }
+.password-input-container {
+  position: relative !important;
+}
+
+.password-input-container i {
+  position: absolute !important;
+  top: 70% !important;
+  right: 10px !important;
+  transform: translateY(-50%) !important;
+  cursor: pointer !important;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
 
 .wrapper form a {
   font-size: 0.9rem;
@@ -617,3 +631,5 @@ ul.CTAs a {
   font-size: 0.8rem;
   color: grey;
 }
+
+
