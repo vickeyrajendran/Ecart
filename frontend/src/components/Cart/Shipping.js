@@ -19,7 +19,7 @@ export const validateShipping = (shippingInfo, navigate) => {
         toast.error('please fill the shipping information', {position:toast.POSITION.BOTTOM_CENTER})
         navigate('/shipping')
     }
-    if(shippingInfo.country == 'India')
+    if(shippingInfo.country === 'India')
         {
             toast.error('Products in $(dollars) so Kindly select dollar based Countries like united states', 
             {position:toast.POSITION.BOTTOM_CENTER})
