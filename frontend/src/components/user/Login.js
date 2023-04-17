@@ -7,15 +7,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 
+
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch(); // indha function dan login la irukadha eduthu store ku anupum
     const navigate = useNavigate(); //change the browser to the wanted page
     const location = useLocation();
     const { loading, error, isAuthenticated} = useSelector(state =>state.authState); // idhu redux la authstate la iruka loading data va eduka use panrom
     const redirect = location.search?'/'+location.search.split('=')[1]:'/'; // cart.js la checkouthnadler la use panradhu
+   
 
+const toggleShowPassword = () => {
+    setShowPassword(prevState => !prevState);
+};
 
 
     const submitHandler = (e)=>{
@@ -29,8 +35,6 @@ export default function Login(){
             navigate(redirect) //change to redirect page
         
         }
-
-
         if(error){
             toast(error,{
             position:toast.POSITION.BOTTOM_CENTER,
@@ -60,16 +64,18 @@ export default function Login(){
                 />
                 </div>
     
-                <div className="form-group">
+                <div className="form-group password-input-container">
                 <label htmlFor="password_field">Password</label>
+                <div className=""></div>
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password_field"
                     className="form-control"
                     value={password}
-                    onChange = {e=>setPassword(e.target.value)}
+                    onChange = {e=>setPassword(e.target.value)}                  
                 />
-                </div>
+                  <i className={showPassword ?"fa fa-eye":"fa fa-eye-slash"} onClick={toggleShowPassword}></i>
+            </div>
 
                 <Link to={'/password/forgot'} className="float-right mb-4">Forgot Password?</Link>
     
@@ -87,8 +93,6 @@ export default function Login(){
             </div>
          </div>
         </Fragment>
-
-        
-
     )
 }
+
